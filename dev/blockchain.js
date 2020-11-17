@@ -17,3 +17,5 @@ Blockchain.prototype.createNewBlock
     this.chain.push(newBlock);
     return newBlock;
 }
+
+module.exports = Blockchain; //export modules

@@ -6,4 +6,5 @@ bitcoin.createNewBlock(Math.random(),'hfiuahuif','hfuised849hf');
 bitcoin.createNewBlock(Math.random(),'hfiuahuif','hfuised849hf');
 
 
-console.log(bitcoin);
+
+console.log(bitcoin.getLastblock());

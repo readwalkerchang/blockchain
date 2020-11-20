@@ -2,9 +2,5 @@ const Blockchain = require('./blockchain') //Include Modules
 
 const bitcoin = new Blockchain;
 bitcoin.createNewBlock(Math.random(),'hfiuahuif','hfuised849hf');
-bitcoin.createNewBlock(Math.random(),'hfiuahuif','hfuised849hf');
-bitcoin.createNewBlock(Math.random(),'hfiuahuif','hfuised849hf');
-
-
-
-console.log(bitcoin.getLastblock());
+bitcoin.createNewTransaction(100,'Joe','Kay');
+console.log(bitcoin);

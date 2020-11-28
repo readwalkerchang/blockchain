@@ -1,3 +1,8 @@
+const sha256 = require('sha256'); 
+//import sha256 library and save it into the variable 'sha256'
+//use 'npm install --save sha256' to install the library
+
+
 function Blockchain(){
     this.chain = [];
     this.pendingTransactions = [];
@@ -33,5 +38,10 @@ Blockchain.prototype.createNewTransaction
     return this.getLastblock()
     ['index'] + 1;
 };
+
+Blockchain.prototype.hashBlock 
+= function(){
+
+} 
 
 module.exports = Blockchain; //export modules

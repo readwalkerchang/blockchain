@@ -1,11 +1,14 @@
 const Blockchain = require('./blockchain') //Include Modules
 
 const bitcoin = new Blockchain;
-bitcoin.createNewBlock(Math.random(),'hfiuahuif','hfuised849hf');
-bitcoin.createNewTransaction(100,'Joe','Kay');
-bitcoin.createNewBlock(Math.random(),'hfiuahuif','hfuised849hf');
-bitcoin.createNewTransaction(200,'Joe','Kay');
-bitcoin.createNewTransaction(300,'Joe','Kay');
-bitcoin.createNewTransaction(400,'Joe','Kay');
+const previousBlockHash = '78495890GDUFJ5HBDIHG7FY23JGHB871';
+const currentBlockData = [{
+    amount: 10,
+    sender: 'BJIO9843JNHA',
+    recipient: '2F84JF8SJHK',
+}]
+const nonce = 100;
 
-console.log(bitcoin);
+let result = bitcoin.hashBlock(previousBlockHash,currentBlockData,nonce);
+
+console.log(result);

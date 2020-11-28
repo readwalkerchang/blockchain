@@ -40,8 +40,11 @@ Blockchain.prototype.createNewTransaction
 };
 
 Blockchain.prototype.hashBlock 
-= function(){
-
+= function(previousBlockHash, currentBlockData, nonce){
+    const dataAsString = 
+    previousBlockHash + JSON.stringify(currentBlockData) + nonce.toString();
+    const hash = sha256(dataAsString);
+    return hash
 } 
 
 module.exports = Blockchain; //export modules

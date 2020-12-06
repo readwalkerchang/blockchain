@@ -39,24 +39,24 @@ Blockchain.prototype.createNewTransaction
     ['index'] + 1;
 };
 
-Blockchain.prototype.hashBlock 
-= function(previousBlockHash, currentBlockData, nonce){
-    const dataAsString = 
-    previousBlockHash + JSON.stringify(currentBlockData) + nonce.toString();
-    const hash = sha256(dataAsString);
-    return hash
-} 
+Blockchain.prototype.hashBlock = 
+function(previousBlockHash, currentBlockData, nonce) {
+	const dataAsString = previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData);
+	const hash = sha256(dataAsString);
+	return hash;
+};
 
-Blockchain.prototype.proofOfWork
-= function(previousBlockHash, currentBlockData){
-    let nonce = 0;
-    let hash = this.hashBlock(previousBlockHash,currentBlockData,nonce);
-    while (hash.substring(0,4) !== '0000' ){
-        nonce++;
-        this.hashBlock(previousBlockHash, currentBlockData, nonce);
-        return nonce;
-    }
 
-}
+Blockchain.prototype.proofOfWork = 
+function(previousBlockHash, currentBlockData) {
+	let nonce = 0;
+	let hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
+	while (hash.substring(0, 4) !== '0000') {
+		nonce++;
+		hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
+	}
+
+	return nonce;
+};
 
 module.exports = Blockchain; //export modules

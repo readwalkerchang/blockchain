@@ -11,7 +11,7 @@ app.get('/blockchain',function(req,res){
 
 app.post('/transaction',function(req,res){
     console.log(req.body);
-    res.send(`the amount of transaction is:${req.body} bitcoin.`);
+    res.send(`the amount of transaction is:${req.body.amount} bitcoin.`);
 });
 
 app.listen(3000, function(){

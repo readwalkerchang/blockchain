@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const blockchain = require('./blockchain');
+const bitcoin = new blockchain();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));//why use this?
 
 app.get('/blockchain',function(req,res){
-    
+    res.send(bitcoin);
 });
 
 app.get('/blockchain',function(req,res){

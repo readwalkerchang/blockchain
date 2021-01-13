@@ -11,13 +11,16 @@ app.get('/blockchain',function(req,res){
     res.send(bitcoin);
 });
 
-app.get('/blockchain',function(req,res){
-    
-});
 
 app.post('/transaction',function(req,res){
-    console.log(req.body);
+    //console.log(req.body);
+    const blockIndex = 
+    bitcoin.createNewTransaction(req.body.amount, req.body.sender, req.body.recipient);
+    //res.json({ note: `Transaction will be added in block ${blockIndex}.` });
     res.send(`the amount of transaction is:${req.body.amount} bitcoin.`);
+});
+app.get('/mine',function(req,res){
+    
 });
 
 app.listen(3000, function(){

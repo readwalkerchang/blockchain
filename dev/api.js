@@ -19,6 +19,12 @@ app.post('/transaction',function(req,res){
     //res.json({ note: `Transaction will be added in block ${blockIndex}.` });
     res.send(`the amount of transaction is:${req.body.amount} bitcoin.`);
 });
+
+//show the pending transactions
+app.get('/transaction',function(req,res){
+    res.send(bitcoin.pendingTransactions);
+});
+
 app.get('/mine',function(req,res){
     
 });

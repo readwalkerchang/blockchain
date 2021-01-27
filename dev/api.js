@@ -26,7 +26,19 @@ app.get('/transaction',function(req,res){
 });
 
 app.get('/mine',function(req,res){
-    
+    //get last block
+    const lastblock = bitcoin.getLastblock();
+    const previousBlockHash = lastBlock['hash'];
+    const currentBlockData = {
+        transaction: bitcoin.pendingTransactions,
+        index: lastBlock['index']+1
+    };
+    //get nonce
+    const nonce = bitcoin.proofOfWork(previousBlockHash,currentBlockData)
+    //get block hash
+    const blockHash = bitcoin.hashBlock(previousBlockHash, currentBlockData, nonce)
+    //create a new block
+    const newBlock = Blockchain.createNewBlock (nouce, previousBlockHash, blockHash)
 });
 
 app.listen(3000, function(){

@@ -3,6 +3,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const blockchain = require('./blockchain');
 const bitcoin = new blockchain();
+const uuid = require('uuid/v1');
+const nodeAddress = uuid().split('-').join('');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));//why use this?
@@ -17,7 +19,7 @@ app.post('/transaction',function(req,res){
     const blockIndex = 
     bitcoin.createNewTransaction(req.body.amount, req.body.sender, req.body.recipient);
     //res.json({ note: `Transaction will be added in block ${blockIndex}.` });
-    res.send(`the amount of transaction is:${req.body.amount} bitcoin.`);
+    res.send(`the amount of transaction is: ${req.body.amount} bitcoin.`);
 });
 
 //show the pending transactions
@@ -39,6 +41,8 @@ app.get('/mine',function(req,res){
     const blockHash = bitcoin.hashBlock(previousBlockHash, currentBlockData, nonce)
     //create a new block
     const newBlock = Blockchain.createNewBlock (nouce, previousBlockHash, blockHash)
+    res.json({message: "A new block has been mined successfully"});
+    bitcoin.createNewTransaction(0.25,"000", nodeAddress);
 });
 
 app.listen(3000, function(){

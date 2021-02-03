@@ -41,7 +41,10 @@ app.get('/mine',function(req,res){
     const blockHash = bitcoin.hashBlock(previousBlockHash, currentBlockData, nonce)
     //create a new block
     const newBlock = bitcoin.createNewBlock (nonce, previousBlockHash, blockHash)
-    res.json({message: "A new block has been mined successfully"});
+    res.json({
+        message: "A new block has been mined successfully",
+        block: newBlock
+});
     bitcoin.createNewTransaction(0.25,"000", nodeAddress);
 });
 

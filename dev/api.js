@@ -30,10 +30,10 @@ app.get('/transaction',function(req,res){
 app.get('/mine',function(req,res){
     //get last block
     const lastblock = bitcoin.getLastblock();
-    const previousBlockHash = lastBlock['hash'];
+    const previousBlockHash = lastblock['hash'];
     const currentBlockData = {
         transaction: bitcoin.pendingTransactions,
-        index: lastBlock['index']+1
+        index: lastblock['index']+1
     };
     //get nonce
     const nonce = bitcoin.proofOfWork(previousBlockHash,currentBlockData)

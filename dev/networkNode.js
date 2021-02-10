@@ -5,6 +5,7 @@ const blockchain = require('./blockchain');
 const bitcoin = new blockchain();
 const { v4: uuidv4 } = require('uuid');
 const nodeAddress = uuidv4().split('-').join('');
+const port = process.argv[2];
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));//why use this?
@@ -40,15 +41,17 @@ app.get('/mine',function(req,res){
     //get block hash
     const blockHash = bitcoin.hashBlock(previousBlockHash, currentBlockData, nonce)
     //create a new block
+    bitcoin.createNewTransaction(0.25,"000", nodeAddress);
     const newBlock = bitcoin.createNewBlock (nonce, previousBlockHash, blockHash)
+    
     res.json({
         message: "A new block has been mined successfully",
         block: newBlock
 });
-    bitcoin.createNewTransaction(0.25,"000", nodeAddress);
+   
 });
 
-app.listen(3000, function(){
-    console.log('listening on port 3000...');
+app.listen(port, function(){
+    console.log(`listening on port ${port} ..`);
 });
 

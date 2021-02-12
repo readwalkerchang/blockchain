@@ -5,7 +5,7 @@ const blockchain = require('./blockchain');
 const bitcoin = new blockchain();
 const { v4: uuidv4 } = require('uuid');
 const nodeAddress = uuidv4().split('-').join('');
-const port = process.argv[2];
+const port = process.argv[3];
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));//why use this?

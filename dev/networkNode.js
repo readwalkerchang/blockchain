@@ -47,8 +47,20 @@ app.get('/mine',function(req,res){
     res.json({
         message: "A new block has been mined successfully",
         block: newBlock
-});
+    });
    
+});
+
+app.post('register-and-broadcast-node',function(req,res){
+    const newNodeUrl = req.body.newNodeUrl;
+});
+
+app.post('/register',function(req,res){
+    ;
+})
+
+app.post('/register-nodes-bulk',function(req, res){
+    ;
 });
 
 app.listen(port, function(){

@@ -1,13 +1,6 @@
-const sha256 = require('sha256'); 
-const currentNodeUrl = process.argv[3];
-//import sha256 library and save it into the variable 'sha256'
-//use 'npm install --save sha256' to install the library
-
-
 function Blockchain(){
-    this.chain = [];
+    this.chain = [1234];
     this.pendingTransactions = [];
-    this.currentNodeUrl = currentNodeUrl;
     this.createNewBlock();
     this.networkNodes =[];
 }
@@ -63,4 +56,4 @@ function(previousBlockHash, currentBlockData) {
 	return nonce;
 };
 
-module.exports = Blockchain; //export modules
+export {Blockchain};
